@@ -14,10 +14,21 @@
     <ol id="messages" class="chat_messages"></ol>
     <div class="chat_footer">
         <form action="submit" method="POST" id="message-form">
-            <label>Message</label> <input type="text" name="message"/>
+            <label>Message</label> <input type="text" name="message" autofocus autocomplete="off" />
             <button type="submit" class="btn btn-success">Send</button>
         </form>
     </div>
+</div>
+<div class="container">
+    <li class="message">
+        <div class="message_title">
+            <h4>FROM</h4>
+            <span>CREATED @</span>
+        </div>
+        <div class="message_body">
+            <p>TEXT</p>
+        </div>
+    </li>
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>

@@ -5,6 +5,7 @@ const path     = require('path'),
 
 const {generateMessage} = require('./utils/message')
 const { isRealString } = require('./utils/validation')
+const { Users } = require('./utils/users')
 
 const publicPath = path.join(__dirname, './../public')
 
@@ -13,34 +14,48 @@ const port   = process.env.PORT || 8000,
       server = http.createServer(app),
       io     = socketIO(server)
 
-app.use(express.static(publicPath))
+const users = new Users()
 
+app.use(express.static(publicPath))
 
 io.on('connection', socket => {
 
 	console.log('New user connected')
 
-	socket.emit('newMessage', generateMessage('Admin', 'Welcome to chit-chat'))
-	socket.broadcast.emit('newMessage', generateMessage('Admin', 'New User'))
-
 	socket.on('join', (params, callback) => {
 		if (!isRealString(params.name) || !isRealString(params.room)) {
 			return callback('Name and room name are required.')
 		}
-		callback()
+
+        socket.join(params.room)
+        users.removeUser(socket.id)
+        users.addUser(socket.id, params.name, params.room)
+
+        io.to(params.room).emit('updateUserList', users.getUserList(params.room))
+        socket.emit('newMessage', generateMessage('Admin', 'Welcome to Chit-Chater'))
+        socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined.`))
+        callback()
 	})
 
 	socket.on('createMessage', (message, callback) => {
 
-		console.log('createMessage', message)
+        const user = users.getUser(socket.id)
 
-		io.emit('newMessage', generateMessage(message.from, message.text))
-		callback('All is good, continue.')
+        if(user && isRealString(message.text)) {
+            io.to(user.room).emit('newMessage', generateMessage(user.name, message.text))
+        }
+
+		callback()
 	})
 
 
 	socket.on('disconnect', () => {
-		console.log('User disconnected')
+        const user = users.removeUser(socket.id)
+
+        if(user) {
+            io.to(user.room).emit('updateUserList', users.getUserList(user.room))
+            io.to(user.room).emit(generateMessage('Admin', `${user.name} has left.`))
+        }
 	})
 
 })
@@ -49,7 +64,3 @@ io.on('connection', socket => {
 server.listen(port, () => {
 	console.log(`Server listening on port ${port}`)
 })
-
-
-
-
