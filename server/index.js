@@ -4,9 +4,10 @@ const path     = require('path'),
       socketIO = require('socket.io')
 
 const publicPath = path.join(__dirname, './../public')
+
 const { generateMessage } = require('./utils/message')
 
-const port = process.env.PORT || 8181
+const port = process.env.PORT || 4000
 
 const app = express()
 

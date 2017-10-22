@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Chit-Chat Room</title>
+</head>
+<body class="chat">
+<div class="chat_sidebar">
+    <h3>People</h3>
+    <div id="users"></div>
+</div>
+<div class="chat_main">
+    <ol id="messages" class="chat_messages"></ol>
+    <div class="chat_footer">
+        <form action="submit" method="POST" id="message-form">
+            <label>Message</label> <input type="text" name="message"/>
+            <button type="submit" class="btn btn-success">Send</button>
+        </form>
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

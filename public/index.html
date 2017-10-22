@@ -1,22 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    </head>
-    <body>
-        <h1>this is the title for the chit-chatter</h1>
+<meta charset="UTF-8">
+<title>The Home of Chit Chat</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<body class="centered">
+<div class="centered-form_form">
+    <form action="/chat.html">
+        <div class="form-field">
+            <h3>Join the Chat</h3>
+        </div>
+        <div class="form-field">
+            <label>Display Name</label>
+            <input type="text" name="name" autofocus />
+        </div>
+        <div class="form-field">
+            <label>Room Name</label>
+            <input type="text" name="room" autofocus />
+        </div>
+        <div class="form-field">
+            <button class="btn btn-success">Join</button>
+        </div>
+    </form>
+</div>
 
-        <ol id="messages"></ol>
 
-        <form action="submit" method="POST" id="message-form">
-            <label>Message</label>
-            <input type="text" name="message" />
-            <button type="submit" class="btn btn-success">Send</button>
-        </form>
-
-
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+</body>
 </html>
