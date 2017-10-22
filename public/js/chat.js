@@ -1,7 +1,16 @@
 const socket = io()
 
 socket.on('connect', function() {
-	console.log('Connected to server')
+	const params = jQuery.deparam(window.location.search)
+
+	socket.emit('join', params, (err, data) => {
+		if (err) {
+			alert(err)
+			window.location.href = '/'
+		} else {
+			console.log('No error')
+		}
+	})
 })
 
 socket.on('disconnect', function() {
