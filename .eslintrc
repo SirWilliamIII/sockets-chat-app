@@ -11,7 +11,7 @@
         "array-bracket-spacing": "error",
         "array-callback-return": "error",
         "array-element-newline": "error",
-        "arrow-body-style": "error",
+        "arrow-body-style": 0,
         "arrow-parens": [
             "error",
             "as-needed"
@@ -96,10 +96,7 @@
         "multiline-ternary": "error",
         "new-cap": "error",
         "new-parens": "error",
-        "newline-after-var": [
-            "error",
-            "always"
-        ],
+        "newline-after-var": 0,
         "newline-before-return": "error",
         "newline-per-chained-call": "error",
         "no-alert": "error",
@@ -184,6 +181,7 @@
         "no-unmodified-loop-condition": "error",
         "no-unneeded-ternary": "error",
         "no-unused-expressions": 0,
+        "no-unused-vars": 0,
         "no-use-before-define": "error",
         "no-useless-call": "error",
         "no-useless-computed-key": "error",
@@ -197,8 +195,8 @@
         "no-whitespace-before-property": "error",
         "no-with": "error",
         "nonblock-statement-body-position": "error",
-        "object-curly-newline": "error",
-        "object-curly-spacing": "error",
+        "object-curly-newline": 0,
+        "object-curly-spacing": 0,
         "object-property-newline": "error",
         "object-shorthand": "error",
         "one-var": "off",
@@ -217,15 +215,12 @@
         "prefer-spread": "error",
         "prefer-template": "error",
         "quote-props": "off",
-        "quotes": [
-            "error",
-            "single"
-        ],
+        "quotes": 0,
         "radix": "error",
         "require-await": "error",
         "require-jsdoc": "error",
         "rest-spread-spacing": "error",
-        "semi": "off",
+        "semi": 0,
         "semi-spacing": "error",
         "semi-style": "error",
         "sort-imports": "error",
