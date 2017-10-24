@@ -3,13 +3,13 @@ const path     = require('path'),
       express  = require('express'),
       socketIO = require('socket.io')
 
-const {generateMessage} = require('./utils/message')
+const { generateMessage } = require('./utils/message')
 const { isRealString } = require('./utils/validation')
 const { Users } = require('./utils/users')
 
 const publicPath = path.join(__dirname, './../public')
 
-const port   = process.env.PORT || 8000,
+const port   = process.env.PORT || 8181,
       app    = express(),
       server = http.createServer(app),
       io     = socketIO(server)
@@ -61,6 +61,6 @@ io.on('connection', socket => {
 })
 
 
-server.listen(port, () => {
+server.listen(port, '0.0.0.0', () => {
 	console.log(`Server listening on port ${port}`)
 })
