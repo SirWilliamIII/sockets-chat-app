@@ -11,7 +11,7 @@ const { generateMessage } = require('./utils/message'),
 const publicPath = path.join(__dirname, './../public'),
 	girlPic = path.join(__dirname, './utils/girl.jpg')
 
-const port = process.env.PORT || 5000,
+const port = process.env.PORT || 8888,
 	app = express(),
 	server = http.createServer(app),
 	io = socketIO(server)
