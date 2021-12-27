@@ -8,8 +8,10 @@
   "dependencies": {
     "express": "^4.16.2",
     "moment": "^2.19.1",
-    "nodemon": "^1.12.1",
+    "nodemon": "^2.0.15",
     "socket.io": "^2.0.3"
   },
-  "devDependencies": {}
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
 }
